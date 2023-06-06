@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react"
 
-export function NormalComp() {
+interface NormalCompProps {
+  isTrue: boolean;
+  username: string;
+}
+
+export function NormalComp({isTrue, username}:NormalCompProps) {
 
   const [todoTitle, setTodoTitle] = useState<string | null>(null)
 
@@ -14,11 +19,14 @@ export function NormalComp() {
 
       const todo = await response.json()
 
+      
       setTodoTitle(todo.title)
     }
-
+    
     loadTodos();
   }, [])
+  
+  console.log({ isTrue, username, todoTitle })
 
   return (
     <div>

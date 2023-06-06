@@ -1,10 +1,12 @@
 'use client'
 
+import { AsyncComp } from "../components/AsyncComp";
+
 import { useState } from "react";
-import { AsyncComp } from "./components/AsyncComp";
-import { NormalComp } from "./components/NormalComp";
 
 export default function Home() {
+  const { username } = useParams();
+  
   const [isTrue, setIsTrue] = useState(false)
 
   console.log({ isTrue })
@@ -13,7 +15,7 @@ export default function Home() {
     <main className="flex h-screen justify-center items-center bg-gray-800">
       <div className="flex flex-col">
         {/** @ts-expect-error Async Server Component */}
-        <AsyncComp />
+        <AsyncComp isTrue={isTrue} username={username}/>
 
         {/* <NormalComp /> */}
 
@@ -30,3 +32,7 @@ export default function Home() {
     </main>
   )
 }
+function useParams(): { username: any; } {
+  throw new Error("Function not implemented.");
+}
+
