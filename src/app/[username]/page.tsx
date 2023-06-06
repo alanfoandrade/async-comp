@@ -1,7 +1,7 @@
 'use client'
-
 import { AsyncComp } from "../components/AsyncComp";
 
+import { useParams } from 'next/navigation';
 import { useState } from "react";
 
 export default function Home() {
@@ -31,8 +31,5 @@ export default function Home() {
       </div>
     </main>
   )
-}
-function useParams(): { username: any; } {
-  throw new Error("Function not implemented.");
 }
 
